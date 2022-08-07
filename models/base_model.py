@@ -15,12 +15,13 @@ class BaseModel:
         """initialization of the base model"""
         if kwargs:
             for key, value in kwargs.items():
-                if key != "__class__":
-                    setattr(self, key, value)
-            if hasattr(self, "created_at") and type(self.created_at) is str:
-                self.created_at = datetime.strptime(kwargs["created_at"], time)
-            if hasattr(self, "updated_at") and type(self.updated_at) is str:
-                self.updated_at = datetime.strptime(kwargs["updated_at"], time)
+                if(key == "__class__"):
+                    continue
+                # Convert isoformat string date to datetime object
+                if key in ("created_at", "updated_at"):
+                    value = datetime.fromisoformat(value)
+
+                setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
