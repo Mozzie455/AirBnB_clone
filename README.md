@@ -17,7 +17,7 @@ We started this project, creating a command interpreter, where the main objectiv
 
 ## Install on PC
 
-    $ git clone https://github.com/Mozzie455b/AirBnB_clone.git
+    $ git clone https://github.com/Mozzie455/AirBnB_clone.git
     $ cd AirBnB_clone
     $ ./console.py
 
